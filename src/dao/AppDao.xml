@@ -3,11 +3,33 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.AppDao">
-
+    <!-- 查询开发者登陆 -->
 	<select id="select_User" resultType="Dev_User">
 	  SELECT * FROM  dev_user where devCode=#{name}
 	  <if test="pwd!=null">
 	    and devPassword=#{pwd}
 	  </if>	
 	</select>
+	
+	<!-- 查询所有信息APP -->
+	<select id="select_app" resultType="App_Info" parameterType="PageApp">
+	select id,softwareName,softwareSize,APKName,downloads,
+		(select dic.valueName from data_dictionary dic where dic.valueId=info.flatformId and dic.typeCode='APP_FLATFORM') as flatformName,
+		(select dic.valueName from data_dictionary dic where dic.valueId=info.`status` and dic.typeCode='APP_STATUS') as statusName,
+		(select ver.versionNo from app_version ver where ver.id=info.versionId) as versionNo,
+		(select cat.categoryName from app_category cat where cat.id=info.categoryLevel1) as categoryLevel1Name,
+		(select cat.categoryName from app_category cat where cat.id=info.categoryLevel2) as categoryLevel2Name,
+		(select cat.categoryName from app_category cat where cat.id=info.categoryLevel3) as categoryLevel3Name
+		from app_info info 
+		order by creationDate desc
+		LIMIT #{current},5; 
+	</select>
+	
+	
+	<select id="Count_AppInfo" resultType="int">
+	     select COUNT(*) from app_info;
+	</select>
+	
+	
+	
 </mapper>

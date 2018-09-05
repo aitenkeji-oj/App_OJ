@@ -7,6 +7,14 @@ import java.sql.Date;
  * @author Administrator
  *
  */
+/**
+ * @author Administrator
+ *
+ */
+/**
+ * @author Administrator
+ *
+ */
 public class App_Info {
 	protected int id;//主键id
 	protected String softwareName;//软件名称
@@ -34,6 +42,52 @@ public class App_Info {
 	protected int versionId;//最新的版本id
 	
 	
+	protected String flatformName; //所属平台;
+	protected String categoryLevel1Name; //1级平台名称
+	protected String categoryLevel2Name; //2级平台名称
+	protected String categoryLevel3Name; //3级平台名称
+	protected String statusName; //状态
+	protected String versionNo; //最新版本号
+	
+	
+	
+	
+	public String getVersionNo() {
+		return versionNo;
+	}
+	public void setVersionNo(String versionNo) {
+		this.versionNo = versionNo;
+	}
+	public String getStatusName() {
+		return statusName;
+	}
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
+	}
+	public String getCategoryLevel1Name() {
+		return categoryLevel1Name;
+	}
+	public void setCategoryLevel1Name(String categoryLevel1Name) {
+		this.categoryLevel1Name = categoryLevel1Name;
+	}
+	public String getCategoryLevel2Name() {
+		return categoryLevel2Name;
+	}
+	public void setCategoryLevel2Name(String categoryLevel2Name) {
+		this.categoryLevel2Name = categoryLevel2Name;
+	}
+	public String getCategoryLevel3Name() {
+		return categoryLevel3Name;
+	}
+	public void setCategoryLevel3Name(String categoryLevel3Name) {
+		this.categoryLevel3Name = categoryLevel3Name;
+	}
+	public String getFlatformName() {
+		return flatformName;
+	}
+	public void setFlatformName(String flatformName) {
+		this.flatformName = flatformName;
+	}
 	public int getId() {
 		return id;
 	}
