@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.AppDao">
+
+	<select id="select_User" resultType="Dev_User">
+	  SELECT * FROM  dev_user where devCode=#{name}
+	  <if test="pwd!=null">
+	    and devPassword=#{pwd}
+	  </if>	
+	</select>
+</mapper>
