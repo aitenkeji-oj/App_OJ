@@ -9,38 +9,46 @@ import java.sql.Date;
  */
 public class Data_Dictionary {
 
-	protected int id; //用户密码
-	protected String userCode; //用户编码
-	protected String userName; //用户编码
-	protected int userType; //用户角色类型（来源于数据字典表，分为：超管、财务、市场、运营、销售）
-	protected int createdBy; //创建者（来源于backend_user用户表的用户id）
-	protected Date creationDate; //创建时间
-	protected int modifyBy; //更新者（来源于backend_user用户表的用户id）
-	protected Date modifyDate; //最新更新时间
-	protected String userPassword; //用户密码
+	 protected int 	id;//主键ID
+	 protected String typeCode;//类型编码
+	 protected String typeName; //类型名称
+	 protected int valueId; //类型值ID
+	 protected String valueName;//类型值Name
+	 protected int createdBy;//创建者（来源于backend_user用户表的用户id）
+	 protected String creationDate;//创建时间
+	 protected int modifyBy;//更新者（来源于backend_user用户表的用户id）
+	 protected String modifyDate; //最新更新时间
+	 
+	 
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getUserCode() {
-		return userCode;
+	public String getTypeCode() {
+		return typeCode;
 	}
-	public void setUserCode(String userCode) {
-		this.userCode = userCode;
+	public void setTypeCode(String typeCode) {
+		this.typeCode = typeCode;
 	}
-	public String getUserName() {
-		return userName;
+	public String getTypeName() {
+		return typeName;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
 	}
-	public int getUserType() {
-		return userType;
+	public int getValueId() {
+		return valueId;
 	}
-	public void setUserType(int userType) {
-		this.userType = userType;
+	public void setValueId(int valueId) {
+		this.valueId = valueId;
+	}
+	public String getValueName() {
+		return valueName;
+	}
+	public void setValueName(String valueName) {
+		this.valueName = valueName;
 	}
 	public int getCreatedBy() {
 		return createdBy;
@@ -48,10 +56,10 @@ public class Data_Dictionary {
 	public void setCreatedBy(int createdBy) {
 		this.createdBy = createdBy;
 	}
-	public Date getCreationDate() {
+	public String getCreationDate() {
 		return creationDate;
 	}
-	public void setCreationDate(Date creationDate) {
+	public void setCreationDate(String creationDate) {
 		this.creationDate = creationDate;
 	}
 	public int getModifyBy() {
@@ -60,19 +68,12 @@ public class Data_Dictionary {
 	public void setModifyBy(int modifyBy) {
 		this.modifyBy = modifyBy;
 	}
-	public Date getModifyDate() {
+	public String getModifyDate() {
 		return modifyDate;
 	}
-	public void setModifyDate(Date modifyDate) {
+	public void setModifyDate(String modifyDate) {
 		this.modifyDate = modifyDate;
 	}
-	public String getUserPassword() {
-		return userPassword;
-	}
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
-	}
-	
-	
-	
+	 
+	 
 }

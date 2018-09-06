@@ -25,11 +25,48 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		LIMIT #{current},5; 
 	</select>
 	
-	
+	<!-- 查询APP总数 -->
 	<select id="Count_AppInfo" resultType="int">
 	     select COUNT(*) from app_info;
 	</select>
 	
-	
-	
+	<!-- 查询一二级分类 -->
+	<select id="select_parentid" resultType="App_Category">
+	   select * from app_category  
+	   <where>
+		   <if test="parentId==null">
+		    parentId IS NULL
+		   </if>
+		   <if test="parentId!=null">
+		    parentId =#{parentId}
+		   </if>
+	   </where>
+	</select>
+   <!-- 查询App状态 -->
+   <select id="select_status" resultType="Data_Dictionary">
+     select * from data_dictionary where typeName ='app状态'
+   </select>
+   <!-- 查询所属平台 -->
+   <select id="select_valueName" resultType="Data_Dictionary">
+      select * from data_dictionary where typeName ='所属平台'
+   </select>
+    
+    
+    <!-- 查询二级菜单 -->
+    <select id="select_App_Category2" resultType="App_Category">
+        select * from app_category where parentId =#{parentId}
+    </select>
+    
+    <!-- 查询app详情信息 -->
+    <select id="select_details">
+       select id,softwareName,softwareSize,APKName,downloads,supportROM,interfaceLanguage,appInfo,
+		(select dic.valueName from data_dictionary dic where dic.valueId=info.flatformId and dic.typeCode='APP_FLATFORM') as flatformName,
+		(select dic.valueName from data_dictionary dic where dic.valueId=info.`status` and dic.typeCode='APP_STATUS') as statusName,
+		(select ver.versionNo from app_version ver where ver.id=info.versionId) as versionNo,
+		(select cat.categoryName from app_category cat where cat.id=info.categoryLevel1) as categoryLevel1Name,
+		(select cat.categoryName from app_category cat where cat.id=info.categoryLevel2) as categoryLevel2Name,
+		(select cat.categoryName from app_category cat where cat.id=info.categoryLevel3) as categoryLevel3Name
+		from app_info info   
+		where id=#{id}
+    </select>
 </mapper>

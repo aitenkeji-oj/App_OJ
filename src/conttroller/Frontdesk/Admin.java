@@ -43,7 +43,6 @@ public class Admin {
 	public String load(HttpServletRequest request,HttpServletResponse response,HttpSession Session){
 		 String devCode=request.getParameter("userCode");  //’Àªß
 		 String devPassword=request.getParameter("userPassword");  //√‹¬Î
-		 System.out.println(devCode+"-"+devPassword);
 		 Backend_User user1=bd.select_User(devCode, null);
 		 Backend_User user2=bd.select_User(devCode, devPassword);
 		 if(user1==null){
